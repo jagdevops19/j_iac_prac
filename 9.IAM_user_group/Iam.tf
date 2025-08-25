@@ -47,7 +47,7 @@ output "warning" {
 
 
 
-#xxxxxxxxx
+#xxxxxxxxxxxxxxx
 #
 #resource "aws_iam_user_group_membership" "admin1_membership" {
   #name = "admin1_membership"

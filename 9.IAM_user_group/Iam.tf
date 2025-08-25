@@ -1,4 +1,4 @@
-#group definition
+#group definition#
 resource "aws_iam_group" "administrator" {
   name = "Administrator"
 }

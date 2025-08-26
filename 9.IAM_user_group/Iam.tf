@@ -39,14 +39,7 @@ output "warning" {
   value = "WARNING: make sure you're not using the AdministratorAccess policy for other users/groups/roles. If this is the case, don't run terraform destroy, but manually unlink the created resources"
 }
 
-
-
-
-
-
-
-
-
+#Alternative way to attach multiple users to a group - not working -
 #xxxxxxxxxxxxxxx
 #
 #resource "aws_iam_user_group_membership" "admin1_membership" {

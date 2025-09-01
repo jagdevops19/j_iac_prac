@@ -1,8 +1,28 @@
 resource "aws_s3_bucket" "bucket" {
-    bucket = var.mybucketname
-    acl  = "private"
-    
-    tags = {
-        Name = var.mybucketname   
-        }
+  bucket = "your-bucket-name"
 }
+
+resource "aws_s3_bucket_acl" "bucket_acl" {
+  bucket = aws_s3_bucket.bucket.id
+  acl    = "private"
+}
+
+
+
+
+
+
+
+
+
+
+
+
+#resource "aws_s3_bucket" "bucket" {
+#    bucket = var.mybucketname
+#    acl  = "private"
+    
+   # tags = {
+    #    Name = var.mybucketname   
+   #     }
+#}

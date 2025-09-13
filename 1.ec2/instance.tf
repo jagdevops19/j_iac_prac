@@ -16,3 +16,6 @@ resource "aws_instance" "example" {
     Name = "example-instance"
   }
 }
+
+#ami           = "ami-0c55b159cbfafe1f0"  # Amazon Linux 2 AMI (HVM), SSD Volume Type - us-east-1
+#in

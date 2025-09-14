@@ -26,4 +26,4 @@ variable "AMI_ID" {
   }   
   
 }
-variable "RDS_PASSWORD" { }
+variable "RDS_PASSWORD" { } # whenever prompts -put your own(any)password here for this workshop

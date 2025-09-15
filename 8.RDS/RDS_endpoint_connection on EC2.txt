@@ -10,7 +10,7 @@ mysql -h mariadb.c32q2gmam868.eu-west-2.rds.amazonaws.com -P 3306 -u root -p
 
 SHOW databases;
 
-USE <database name>
+USE <database name>   #mydb(as per this workshop)
 
 CREATE TABLE Person (
     Name VARCHAR(255),
@@ -48,34 +48,32 @@ MariaDB [(none)]> SHOW databases;
 +--------------------+
 | information_schema |
 | innodb             |
-| mydebugdb          |
+| mydb          |
 | mysql              |
 | performance_schema |
 | sys                |
 +--------------------+
 6 rows in set (0.001 sec)
 
-MariaDB [(none)]> USE mydugdb;
-ERROR 1049 (42000): Unknown database 'mydugdb'
-MariaDB [(none)]> USE mydebugdb;
+MariaDB [(none)]> USE mydb;
 Reading table information for completion of table and column names
 You can turn off this feature to get a quicker startup with -A
 
 Database changed
-MariaDB [mydebugdb]> CREATE TABLE People (
+MariaDB [mydb]> CREATE TABLE People (
     ->     Name VARCHAR(255),
     ->     Age INT,
     ->     Place VARCHAR(255)
     -> );
-ERROR 1050 (42S01): Table 'People' already exists
-MariaDB [mydebugdb]> CREATE TABLE Person (
+
+MariaDB [mydb]> CREATE TABLE Person (
     ->     Name VARCHAR(255),
     ->     Age INT,
     ->     Place VARCHAR(255)
     -> );
 Query OK, 0 rows affected (0.014 sec)
 
-MariaDB [mydebugdb]> Describe Person;
+MariaDB [mydb]> Describe Person;
 +-------+--------------+------+-----+---------+-------+
 | Field | Type         | Null | Key | Default | Extra |
 +-------+--------------+------+-----+---------+-------+
@@ -85,11 +83,11 @@ MariaDB [mydebugdb]> Describe Person;
 +-------+--------------+------+-----+---------+-------+
 3 rows in set (0.001 sec)
 
-MariaDB [mydebugdb]> INSERT INTO Person (Name, Age, Place)
+MariaDB [mydb]> INSERT INTO Person (Name, Age, Place)
     -> VALUES ('Jhon Doe', 30, 'New York');
 Query OK, 1 row affected (0.005 sec)
 
-MariaDB [mydebugdb]> SELECT * FROM Person;
+MariaDB [mydb]> SELECT * FROM Person;
 +----------+------+----------+
 | Name     | Age  | Place    |
 +----------+------+----------+
@@ -97,16 +95,16 @@ MariaDB [mydebugdb]> SELECT * FROM Person;
 +----------+------+----------+
 1 row in set (0.001 sec)
 
-MariaDB [mydebugdb]> SHOW tables;
+MariaDB [mydb]> SHOW tables;
 +---------------------+
-| Tables_in_mydebugdb |
+| Tables_in_mydb |
 +---------------------+
 | People              |
 | Person              |
 +---------------------+
 2 rows in set (0.001 sec)
 
-MariaDB [mydebugdb]> 
+MariaDB [mydb]> 
 
 
 

@@ -20,7 +20,7 @@ resource "aws_db_instance" "mariadb" {
     engine = "mariadb"
     engine_version = "10.6.23"
     instance_class = "db.t3.micro"
-    #name = "mydb"
+    db_name = "mydb"
     username = "root"         #var.db_username
     password = var.RDS_PASSWORD               #var.db_password
     db_subnet_group_name = aws_db_subnet_group.mariadb-subnet.name

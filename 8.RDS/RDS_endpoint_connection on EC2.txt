@@ -1,0 +1,112 @@
+sudo su -
+yum -y install mariadb105-server wget
+systemctl enable mariadb
+systemctl start mariadb
+yum -y update
+
+mysql -h <paste rds end point> -P 3306 -u <username> -p 
+
+mysql -h mariadb.c32q2gmam868.eu-west-2.rds.amazonaws.com -P 3306 -u root -p
+
+SHOW databases;
+
+USE <database name>
+
+CREATE TABLE Person (
+    Name VARCHAR(255),
+    Age INT,
+    Place VARCHAR(255)
+);
+
+Describe Person;
+
+INSERT INTO Person (Name, Age, Place)
+VALUES ('Jhon Doe', 30, 'New York');
+
+SELECT * FROM Person;
+
+
++++++++++++++++++++++++++++++++++++
+...................................
+Ec2 Cli steps for database creation
+
+[ec2-user@ip-10-0-1-67 ~]$ sudo su -
+Last login: Mon Sep 15 09:20:40 UTC 2025 on pts/1
+[root@ip-10-0-1-67 ~]# mysql -h mariadb.c32q2gmam868.eu-west-2.rds.amazonaws.com -P 3306 -u root -p
+Enter password: 
+Welcome to the MariaDB monitor.  Commands end with ; or \g.
+Your MariaDB connection id is 102
+Server version: 10.6.23-MariaDB-log managed by https://aws.amazon.com/rds/
+
+Copyright (c) 2000, 2018, Oracle, MariaDB Corporation Ab and others.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+MariaDB [(none)]> SHOW databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| innodb             |
+| mydebugdb          |
+| mysql              |
+| performance_schema |
+| sys                |
++--------------------+
+6 rows in set (0.001 sec)
+
+MariaDB [(none)]> USE mydugdb;
+ERROR 1049 (42000): Unknown database 'mydugdb'
+MariaDB [(none)]> USE mydebugdb;
+Reading table information for completion of table and column names
+You can turn off this feature to get a quicker startup with -A
+
+Database changed
+MariaDB [mydebugdb]> CREATE TABLE People (
+    ->     Name VARCHAR(255),
+    ->     Age INT,
+    ->     Place VARCHAR(255)
+    -> );
+ERROR 1050 (42S01): Table 'People' already exists
+MariaDB [mydebugdb]> CREATE TABLE Person (
+    ->     Name VARCHAR(255),
+    ->     Age INT,
+    ->     Place VARCHAR(255)
+    -> );
+Query OK, 0 rows affected (0.014 sec)
+
+MariaDB [mydebugdb]> Describe Person;
++-------+--------------+------+-----+---------+-------+
+| Field | Type         | Null | Key | Default | Extra |
++-------+--------------+------+-----+---------+-------+
+| Name  | varchar(255) | YES  |     | NULL    |       |
+| Age   | int(11)      | YES  |     | NULL    |       |
+| Place | varchar(255) | YES  |     | NULL    |       |
++-------+--------------+------+-----+---------+-------+
+3 rows in set (0.001 sec)
+
+MariaDB [mydebugdb]> INSERT INTO Person (Name, Age, Place)
+    -> VALUES ('Jhon Doe', 30, 'New York');
+Query OK, 1 row affected (0.005 sec)
+
+MariaDB [mydebugdb]> SELECT * FROM Person;
++----------+------+----------+
+| Name     | Age  | Place    |
++----------+------+----------+
+| Jhon Doe |   30 | New York |
++----------+------+----------+
+1 row in set (0.001 sec)
+
+MariaDB [mydebugdb]> SHOW tables;
++---------------------+
+| Tables_in_mydebugdb |
++---------------------+
+| People              |
+| Person              |
++---------------------+
+2 rows in set (0.001 sec)
+
+MariaDB [mydebugdb]> 
+
+
+

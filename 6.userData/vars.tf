@@ -25,3 +25,6 @@ variable "AMI" {
 variable "INSTANCE_DEVICE_NAME" {
   default = "/dev/xvdh"
 }
+
+
+##
